@@ -357,3 +357,81 @@ const element = (
   </>
 );
 ```
+
+## 리액트와 리렌더링
+
+Element 타입이 바뀌면 이전 Element는 버리고 새로 그린다.
+
+Element 타입이 같다면 key를 먼저 비교하고, props를 비교해서 변경 사항을 반영한다.
+
+> 바닐라 JS 리렌더링
+
+1초마다 버튼을 다시 그리는 함수 randomButton
+
+```jsx
+const rootElement = document.getElementById("root");
+
+function randomButton() {
+  const number = Math.floor(Math.random() * (10 - 1) + 1);
+  const element = `
+    <button>${number}</button>
+  `;
+
+  rootElement.innerHTML = element;
+}
+
+setInterval(randomButton, 1000);
+```
+
+숫자가 랜덤하게 변경될 때마다 Element를 다시 그린다.
+
+rootElement인 ```<div>``` 요소까지 다시 그리며
+
+리렌더링할 때마다 ```tab``` 포커스를 잃는다.
+
+> 리액트 리렌더링
+
+```jsx
+const rootElement = document.getElementById("root");
+
+function randomButton() {
+  const number = Math.floor(Math.random() * (10 - 1) + 1);
+  const element = <button>{number}</button>;
+
+  ReactDOM.render(element, rootElement);
+}
+
+setInterval(randomButton, 1000);
+```
+
+숫자가 랜덤하게 변경될 때마다 변경된 부분만 다시 그린다.
+
+rootElement인 ```<div>``` 요소는 리렌더링하지 않으며
+
+리렌더링할 때 ```tab``` 포커스를 잃지 않는다.
+
+[> codesandbox](https://codesandbox.io/s/react-basic-rerender-tprsn?file=/index.html)
+
+## 이벤트 핸들러 써보기
+
+> JS에서의 이벤트 핸들러
+
+- ```onclick```, ```onmouseout```, ```onfocus```, ```onblur``` ...
+
+- addEventListener
+
+> 리액트에서의 이벤트 핸들러
+
+- ```camelCase``` 를 사용한다
+
+- ```onClick```, ```onMouseOut```, ```onFocus```, ```onBlur``` ...
+
+```jsx
+const rootElement = document.getElementById("root");
+
+const handleClick = () => alert("Pressed!");
+
+const element = <button onClick={handleClick}>Please press</button>;
+
+ReactDOM.render(element, rootElement);
+```

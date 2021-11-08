@@ -418,7 +418,7 @@ rootElement인 ```<div>``` 요소는 리렌더링하지 않으며
 
 - ```onclick```, ```onmouseout```, ```onfocus```, ```onblur``` ...
 
-- addEventListener
+- ```addEventListener```
 
 > 리액트에서의 이벤트 핸들러
 
@@ -435,3 +435,12 @@ const element = <button onClick={handleClick}>Please press</button>;
 
 ReactDOM.render(element, rootElement);
 ```
+
+[> codesandbox](https://codesandbox.io/s/react-basic-handleevent-qn1gt?file=/index.html)
+
+> 간단한 검색창 만들어 보기
+
+- ```<input>```, ```<button>``` 엘리먼트를 사용한다
+- ```onChange```, ```onClick``` 이벤트를 사용한다
+
+[> codesandbox](https://codesandbox.io/s/mini-search-bar-jl8l1?file=/index.html)

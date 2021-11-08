@@ -216,7 +216,7 @@ const element = (
 )
 ```
 
-## Element 찍어내기
+## Element 찍어내기 (Custom Element)
 
 > Root Element
 
@@ -296,6 +296,64 @@ const element = (
     </Print>
     <Print title="Title 2" description="Description is ... two" />
     <Print title="Title 3" description="Description is ... three" />
+  </>
+);
+```
+
+## JS와 JSX 섞어쓰기 (interpolation)
+
+JS와 JSX를 섞어서 다음과 같이 표현할 수 있다.
+
+```jsx
+const Print({ title, description, children }) => {
+  <React.Fragment>
+    <h1>{title}</h1>
+    <ul className={description}>
+      <li>
+        {children}
+      </li>
+    </ul>
+  </React.Fragment>
+};
+
+const element = (
+  <>
+    <Print title="This is title 1" description="title 1">
+      {Print({title: 'This is title 2', description: 'title 2', children: 'Read me ...'})}
+    </Print>
+  </>
+)
+```
+
+자바스크립트 문법인 조건문과 반복문을 사용할 수 있다.
+
+```jsx
+const Text = ({ text }) => {
+  if (text.charAt(0) === text.charAt(0).toUpperCase()) {
+    return <h1>{text}</h1>
+  } else {
+    return <h3>{text}</h3>
+  }
+};
+
+const Texts = (
+  <>
+    <Text text="Text" />
+    <Text text="text" />
+  </>
+);
+```
+
+```jsx
+function Number({ number, selected }) {
+  return selected ? <h1>{number}</h1> : <h3>{number}</h3>;
+}
+
+const element = (
+  <>
+    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((number) => (
+      <Number number={number} selected={number === 3} />
+    ))}
   </>
 );
 ```

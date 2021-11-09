@@ -443,4 +443,6 @@ ReactDOM.render(element, rootElement);
 - ```<input>```, ```<button>``` 엘리먼트를 사용한다
 - ```onChange```, ```onClick``` 이벤트를 사용한다
 
+https://codesandbox.io/embed/mini-search-bar-jl8l1?fontsize=14&hidenavigation=1&theme=dark
+
 [> codesandbox](https://codesandbox.io/s/mini-search-bar-jl8l1?file=/index.html)

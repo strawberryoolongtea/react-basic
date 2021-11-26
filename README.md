@@ -6,13 +6,13 @@
 
 ```jsx
 // Root Element 선택
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 
 // <h1> Element 생성
-const element = document.createElement('h1');
+const element = document.createElement("h1");
 
 // <h1> Element의 textContent로 'Hello World'라는 문자열 추가
-element.textContent = 'Hello World';
+element.textContent = "Hello World";
 
 // Root Element에 새로 생성한 <h1> Element를 자식으로 추가
 rootElement.appendChild(element);
@@ -20,25 +20,30 @@ rootElement.appendChild(element);
 
 > 리액트로 Element 생성하기
 
-```React.createElement()``` 와 ```ReactDOM.render()``` 를 이용해서 Element를 생성할 수 있다.
+`React.createElement()` 와 `ReactDOM.render()` 를 이용해서 Element를 생성할 수 있다.
 
 > React, ReactDOM CDN
 
 ```html
-<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script
+  crossorigin
+  src="https://unpkg.com/react@17/umd/react.development.js"
+></script>
+<script
+  crossorigin
+  src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+></script>
 ```
 
 ```jsx
 // Select Root Element
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 
 // Create <h1> Element by React.createElement()
 // Append 'Hello World' by children
-const element = React.createElement('h1', { children: 'Hello World' });
+const element = React.createElement("h1", { children: "Hello World" });
 // Equal
 // const element = React.createElement('h1', null, 'Hello World');
-
 
 // Append <h1> Element to Root Element by ReactDOM.render()
 ReactDOM.render(element, rootElement);
@@ -55,29 +60,28 @@ Example
 ```jsx
 // 3번째 인자인 children을 우선한다
 React.createElement(
-  'h1',
+  "h1",
   {
-    className: 'title',
-    children: 'Strawberries'
+    className: "title",
+    children: "Strawberries",
   },
-  'Cranberries'
+  "Cranberries"
 );
 ```
+
 ```jsx
-React.createElement(
-  'h1',
-  {
-    className: 'title',
-    children: ['Strawberry', ' Oolong', ' Tea']
-  }
-);
+React.createElement("h1", {
+  className: "title",
+  children: ["Strawberry", " Oolong", " Tea"],
+});
 ```
+
 ```jsx
-React.createElement(
-  'h1',
-  { className: 'title' },
-  ['Strawberry', ' Oolong', ' Tea']
-);
+React.createElement("h1", { className: "title" }, [
+  "Strawberry",
+  " Oolong",
+  " Tea",
+]);
 ```
 
 > ReactDOM.render()
@@ -92,7 +96,7 @@ ReactDOM.render(element, container[, callback]);
 
 컴파일러(babel)가 JSX 표현을 자바스크립트 형식으로 컴파일 해준다.
 
-script type을 ```text/babel``` 로 설정한다.
+script type을 `text/babel` 로 설정한다.
 
 > babel CDN
 
@@ -107,7 +111,7 @@ script type을 ```text/babel``` 로 설정한다.
 JSX를 사용하면 React.createElement() 보다 쉽고 명시적으로 Element를 생성할 수 있다.
 
 ```jsx
-const element = <h1 className="title">Hello World</h1>
+const element = <h1 className="title">Hello World</h1>;
 // Equal
 // const element = <h1 className="title" children="Hello World" />
 ```
@@ -115,8 +119,8 @@ const element = <h1 className="title">Hello World</h1>
 자바스크립트를 사용할 수 있기 때문에 변수도 활용할 수 있다.
 
 ```jsx
-const text = 'Cranberries';
-const title = 'Strawberries';
+const text = "Cranberries";
+const title = "Strawberries";
 const element = <h1 className={title}>{text}</h1>;
 
 // 아래와 같이 표현될 수 있다.
@@ -129,8 +133,8 @@ const element = <h1 className={title}>{text}</h1>;
 spread 연산자를 사용해 다음과 같이 표현할 수 있다.
 
 ```jsx
-const props = { className: 'Strawberries', children: 'Cranberries' };
-const element = <h1 {...props} />
+const props = { className: "Strawberries", children: "Cranberries" };
+const element = <h1 {...props} />;
 
 // 아래와 같이 표현될 수 있다.
 // const element = <h1 className={props.className} children={props.children} />
@@ -151,15 +155,15 @@ const element = <h1 {...props} />
 > React.createElement()를 사용하는 방식
 
 ```jsx
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 
 const element = (
   <div
     className="box"
     children={[
-      React.createElement('h1', null, 'Heading 1'),
-      React.createElement('h3', null, 'Heading 2'),
-      React.createElement('h5', null, 'Children'),
+      React.createElement("h1", null, "Heading 1"),
+      React.createElement("h3", null, "Heading 2"),
+      React.createElement("h5", null, "Children"),
     ]}
   />
   // 리액트에서는 하나의 Element만 리턴해야되기 때문에
@@ -189,14 +193,11 @@ ReactDOM.render(element, rootElement);
 const element = (
   <React.Fragment
     className="box"
-    children={[
-      <h1>Heading 1</h1>,
-      <h3>Heading 2</h3>,
-      <h5>Children</h5>,
-    ]}
+    children={[<h1>Heading 1</h1>, <h3>Heading 2</h3>, <h5>Children</h5>]}
   />
 );
 ```
+
 ```jsx
 const element = (
   <React.Fragment>
@@ -206,6 +207,7 @@ const element = (
   </React.Fragment>
 );
 ```
+
 ```jsx
 const element = (
   <>
@@ -213,7 +215,7 @@ const element = (
     <h3>Heading 2</h3>
     <h5>Children</h5>
   </>
-)
+);
 ```
 
 ## Element 찍어내기 (Custom Element)
@@ -221,8 +223,9 @@ const element = (
 > Root Element
 
 ```jsx
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 ```
+
 > Render 함수 실행
 
 ```jsx
@@ -230,7 +233,7 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(element, rootElement);
 ```
 
-> ```Function``` = 재사용 가능한 Element
+> `Function` = 재사용 가능한 Element
 
 함수를 이용해서 재사용 가능한 element를 생성할 수 있다
 
@@ -243,17 +246,19 @@ const print = (title, description) => (
 );
 
 const element = (
-  <> {/* <React.Fragment>는 다음과 같이 쓰일 수도 있다. */}
-    {print('Title 1', 'Description is ... one')}
-    {print('Title 2', 'Description is ... two')}
-    {print('Title 3', 'Description is ... three')}
+  <>
+    {" "}
+    {/* <React.Fragment>는 다음과 같이 쓰일 수도 있다. */}
+    {print("Title 1", "Description is ... one")}
+    {print("Title 2", "Description is ... two")}
+    {print("Title 3", "Description is ... three")}
   </>
 );
 ```
 
-> ```Custom Component``` = Upper Case
+> `Custom Component` = Upper Case
 
-```UpperCase``` 와 ```JSX``` 를 사용한 함수를 통해 Custom Element를 생성할 수 있다.
+`UpperCase` 와 `JSX` 를 사용한 함수를 통해 Custom Element를 생성할 수 있다.
 
 ```jsx
 const Print = ({ title, description }) => (
@@ -272,9 +277,9 @@ const element = (
 );
 ```
 
-> ```Children``` 제한 = 없음
+> `Children` 제한 = 없음
 
-```children``` 을 이용해서 제약 없는 찍어내기가 가능하다
+`children` 을 이용해서 제약 없는 찍어내기가 가능하다
 
 ```jsx
 const Print = ({ title, description, children }) => (
@@ -330,9 +335,9 @@ const element = (
 ```jsx
 const Text = ({ text }) => {
   if (text.charAt(0) === text.charAt(0).toUpperCase()) {
-    return <h1>{text}</h1>
+    return <h1>{text}</h1>;
   } else {
-    return <h3>{text}</h3>
+    return <h3>{text}</h3>;
   }
 };
 
@@ -385,9 +390,9 @@ setInterval(randomButton, 1000);
 
 숫자가 랜덤하게 변경될 때마다 Element를 다시 그린다.
 
-rootElement인 ```<div>``` 요소까지 다시 그리며
+rootElement인 `<div>` 요소까지 다시 그리며
 
-리렌더링할 때마다 ```tab``` 포커스를 잃는다.
+리렌더링할 때마다 `tab` 포커스를 잃는다.
 
 > 리액트 리렌더링
 
@@ -406,9 +411,9 @@ setInterval(randomButton, 1000);
 
 숫자가 랜덤하게 변경될 때마다 변경된 부분만 다시 그린다.
 
-rootElement인 ```<div>``` 요소는 리렌더링하지 않으며
+rootElement인 `<div>` 요소는 리렌더링하지 않으며
 
-리렌더링할 때 ```tab``` 포커스를 잃지 않는다.
+리렌더링할 때 `tab` 포커스를 잃지 않는다.
 
 [> codesandbox](https://codesandbox.io/s/react-basic-rerender-tprsn?file=/index.html)
 
@@ -416,15 +421,15 @@ rootElement인 ```<div>``` 요소는 리렌더링하지 않으며
 
 > JS에서의 이벤트 핸들러
 
-- ```onclick```, ```onmouseout```, ```onfocus```, ```onblur``` ...
+- `onclick`, `onmouseout`, `onfocus`, `onblur` ...
 
-- ```addEventListener```
+- `addEventListener`
 
 > 리액트에서의 이벤트 핸들러
 
-- ```camelCase``` 를 사용한다
+- `camelCase` 를 사용한다
 
-- ```onClick```, ```onMouseOut```, ```onFocus```, ```onBlur``` ...
+- `onClick`, `onMouseOut`, `onFocus`, `onBlur` ...
 
 ```jsx
 const rootElement = document.getElementById("root");
@@ -440,9 +445,26 @@ ReactDOM.render(element, rootElement);
 
 > 간단한 검색창 만들어 보기
 
-- ```<input>```, ```<button>``` 엘리먼트를 사용한다
-- ```onChange```, ```onClick``` 이벤트를 사용한다
+- `<input>`, `<button>` 엘리먼트를 사용한다
+- `onChange`, `onClick` 이벤트를 사용한다
 
 https://codesandbox.io/embed/mini-search-bar-jl8l1?fontsize=14&hidenavigation=1&theme=dark
 
 [> codesandbox](https://codesandbox.io/s/mini-search-bar-jl8l1?file=/index.html)
+
+> 인라인 스타일링
+
+인라인으로 스타일링할 경우에 객체 형태로 지정해준다.
+
+```jsx
+function App() {
+  const name = "strawberry";
+  const style = {
+    backgroundColor: "mistyrose",
+    color: "crimson",
+    fontSize: 40, // 단위를 생략하면 px로 지정된다.
+    padding: 16,
+  };
+  return <div style={style}>{name}</div>;
+}
+```
